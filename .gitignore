@@ -1,0 +1,12 @@
+#save .gitignore
+/?
+!.gitignore
+serverless.yaml
+
+#ignore src,but save index.py
+/src/*
+!/src/index.py
+
+
+
+
