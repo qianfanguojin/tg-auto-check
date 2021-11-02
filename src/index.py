@@ -1,7 +1,6 @@
 # -*- coding: utf8 -*-
 import os
 import time
-from TGAutoSign.src.telethon.tl.types import User
 from telethon import TelegramClient, events, sync
 from telethon.sessions import StringSession
 def main_handler(event,context):
