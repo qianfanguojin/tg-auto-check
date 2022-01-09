@@ -13,14 +13,19 @@ def main_handler(event,context):
     for num in range(len(api_id)):
         client = TelegramClient(StringSession(auth_string[num]), api_id[num], api_hash[num])
         client.start()
-        client.send_message("@BaigeiMe_Bot", '/checkin')  #第一项是机器人ID，第二项是发送的文字
+        
+        getfree_cloud_chat_entity = client.get_entity('t.me/GetfreeCloud')
+
+        client.send_message(getfree_cloud_chat_entity, '/checkin@GetfreeCloud_Bot')  #第一项是机器人ID，第二项是发送的文字
         client.send_message("@ecyjcbot", '/checkin')  #第一项是机器人ID，第二项是发送的文字
+
         if(event["TriggerName"] == 'getfree_upgrade'):
-            client.send_message("@BaigeiMe_Bot", '/upgrade')  #第一项是机器人ID，第二项是发送的文字
+            client.send_message(getfree_cloud_chat_entity, '/upgrade@GetfreeCloud')  #第一项是机器人ID，第二项是发送的文字
             print("Getfree Upgrade")
+
         time.sleep(5)  #延时5秒，等待机器人回应（一般是秒回应，但也有发生阻塞的可能）
         client.send_read_acknowledge("@BaigeiMe_Bot")     #将机器人回应设为已读
         client.send_read_acknowledge("@ecyjcbot")
         print("Done! App name:", api_id[num])
         # print(client.session.save())
-    os._exit(0)
+    return
